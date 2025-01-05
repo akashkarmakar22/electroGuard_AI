@@ -70,7 +70,13 @@ header p {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #ffedcc; /* Adjust to match your site theme */
+  /* From https://css.glass */
+  background: rgba(245, 151, 88, 0.29);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(235, 209, 61, 0.3); /* Adjust to match your site theme */
   color: black;
   position: sticky;
   top: 0;
@@ -131,7 +137,6 @@ header p {
   }
 }
 
-
 /* Container */
 .container {
   max-width: 1200px;
@@ -187,7 +192,7 @@ section h2 {
 
 .project-image {
   width: 100%;
-  hight:50px;
+  hight: 50px;
   border-radius: 8px;
 }
 
@@ -198,7 +203,12 @@ section h2 {
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.6); /* Increase opacity for better visibility */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Increase opacity for better visibility */
   padding: 1rem;
   border-radius: 8px;
   max-width: 90%; /* Prevent overflowing on smaller screens */
@@ -206,22 +216,21 @@ section h2 {
 
 @media (max-width: 768px) {
   .project-description {
-      font-size: 1rem; /* Smaller font for medium screens */
-      padding: 0.8rem;
-      top: 10px;
-      left: 10px;
+    font-size: 1rem; /* Smaller font for medium screens */
+    padding: 0.8rem;
+    top: 10px;
+    left: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .project-description {
-      font-size: 0.9rem; /* Smaller font for small screens */
-      padding: 0.6rem;
-      top: 5px;
-      left: 5px;
+    font-size: 0.9rem; /* Smaller font for small screens */
+    padding: 0.6rem;
+    top: 5px;
+    left: 5px;
   }
 }
-
 
 .data-table {
   width: 100%;
@@ -791,7 +800,6 @@ footer p {
   color: #0073b1; /* Change to a highlight color */
 }
 
-
 /* .feature p,
 .member p {
   font-size: 1rem;
@@ -953,9 +961,9 @@ footer p {
 
 @media (max-width: 768px) {
   .carousel-btn {
-      font-size: 1.5rem;
-      width: 30px;
-      height: 30px;
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -973,7 +981,11 @@ footer p {
 
 .impact-item {
   flex: 1 1 calc(25% - 1rem);
-  background: linear-gradient(to bottom right, #ff8c42, #ff2e63); /* Adjusted to site colors */
+  background: linear-gradient(
+    to bottom right,
+    #ff8c42,
+    #ff2e63
+  ); /* Adjusted to site colors */
   color: #fff;
   text-align: center;
   padding: 1.5rem;
@@ -1013,13 +1025,13 @@ footer p {
 
 @media (max-width: 768px) {
   .impact-item {
-      flex: 1 1 calc(45% - 1rem);
+    flex: 1 1 calc(45% - 1rem);
   }
 }
 
 @media (max-width: 480px) {
   .impact-item {
-      flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 }
 .impact-logo {
@@ -1041,7 +1053,7 @@ footer p {
 .impact-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(to bottom right, #ff8c42, #ff2e63) ;
+  background: linear-gradient(to bottom right, #ff8c42, #ff2e63);
 }
 
 .project-impact {
@@ -1060,12 +1072,7 @@ footer p {
   margin: 30px 0;
 }
 
-.electricity-loss h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-  text-align: center;
-}
+
 
 .electricity-loss-table {
   width: 100%;
@@ -1081,7 +1088,7 @@ footer p {
 }
 
 .electricity-loss-table th {
-  background-color: #f4f4f4;
+  background-color:var(--primary-color);
   font-weight: bold;
 }
 
@@ -1101,7 +1108,7 @@ footer p {
     white-space: nowrap;
     -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
   }
-  
+
   .electricity-loss-table th,
   .electricity-loss-table td {
     padding: 8px;
@@ -1113,7 +1120,7 @@ footer p {
   .electricity-loss h2 {
     font-size: 20px; /* Adjust heading size */
   }
-  
+
   .electricity-loss-table th,
   .electricity-loss-table td {
     padding: 6px;
@@ -1121,7 +1128,7 @@ footer p {
   }
 }
 
- /* Global Ranking Section Styles */
+/* Global Ranking Section Styles */
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -1161,7 +1168,7 @@ h2 {
 }
 
 #year-slider:hover {
-  background: #4CAF50;
+  background: #4caf50;
 }
 
 #year-slider::-webkit-slider-thumb {
@@ -1170,7 +1177,7 @@ h2 {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #4CAF50;
+  background: #4caf50;
   cursor: pointer;
 }
 
@@ -1178,7 +1185,7 @@ h2 {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #4CAF50;
+  background: #4caf50;
   cursor: pointer;
 }
 
@@ -1322,5 +1329,3 @@ h2 {
     max-width: 100%;
   }
 }
-
-
