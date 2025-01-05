@@ -99,22 +99,28 @@ function prevSlide() {
     showSlide(currentSlide - 1);
 }
 
-// Data for rankings (added more details for the new columns)
+// Data for rankings (5 rows per year)
 const rankings = {
   2024: [
-    { rank: 1, country: "Country A", loss: "5%", cost: 3.2, theft: 1200 },
-    { rank: 2, country: "Country B", loss: "6%", cost: 4.1, theft: 1400 },
-    { rank: 3, country: "Country C", loss: "7%", cost: 5.3, theft: 1600 },
+    { rank: 1, country: "Country A", loss: "5%" },
+    { rank: 2, country: "Country B", loss: "6%" },
+    { rank: 3, country: "Country C", loss: "7%" },
+    { rank: 4, country: "Country D", loss: "8%" },
+    { rank: 5, country: "Country E", loss: "9%" },
   ],
   2023: [
-    { rank: 1, country: "Country X", loss: "4.5%", cost: 2.9, theft: 1100 },
-    { rank: 2, country: "Country Y", loss: "5.5%", cost: 3.7, theft: 1350 },
-    { rank: 3, country: "Country Z", loss: "6.5%", cost: 4.8, theft: 1500 },
+    { rank: 1, country: "Country X", loss: "4.5%" },
+    { rank: 2, country: "Country Y", loss: "5.5%" },
+    { rank: 3, country: "Country Z", loss: "6.5%" },
+    { rank: 4, country: "Country W", loss: "7.5%" },
+    { rank: 5, country: "Country V", loss: "8.5%" },
   ],
   2022: [
-    { rank: 1, country: "Country P", loss: "6%", cost: 3.8, theft: 1250 },
-    { rank: 2, country: "Country Q", loss: "6.5%", cost: 4.5, theft: 1450 },
-    { rank: 3, country: "Country R", loss: "7.2%", cost: 5.9, theft: 1700 },
+    { rank: 1, country: "Country P", loss: "6%" },
+    { rank: 2, country: "Country Q", loss: "6.5%" },
+    { rank: 3, country: "Country R", loss: "7.2%" },
+    { rank: 4, country: "Country S", loss: "7.8%" },
+    { rank: 5, country: "Country T", loss: "8.1%" },
   ],
 };
 
@@ -138,8 +144,6 @@ function updateRankingTable() {
         <td>${entry.rank}</td>
         <td>${entry.country}</td>
         <td>${entry.loss}</td>
-        <td>${entry.cost}</td>
-        <td>${entry.theft}</td>
       </tr>
     `;
     tableBody.innerHTML += row;
