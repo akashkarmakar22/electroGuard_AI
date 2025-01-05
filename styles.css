@@ -187,6 +187,7 @@ section h2 {
 
 .project-image {
   width: 100%;
+  hight:50px;
   border-radius: 8px;
 }
 
@@ -769,18 +770,33 @@ footer p {
 
 .feature img,
 .member img {
-  width: 100%;
+  width: 80%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 50%;
   margin-bottom: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.social-links {
+  margin-top: 10px;
+}
 
-.feature p,
+.social-links a {
+  margin-right: 10px;
+  font-size: 1.9em;
+  color: #333; /* Default icon color */
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #0073b1; /* Change to a highlight color */
+}
+
+
+/* .feature p,
 .member p {
   font-size: 1rem;
   color: #555;
-}
+} */
 
 @media (max-width: 768px) {
   .feature,
@@ -1193,7 +1209,7 @@ h2 {
 }
 
 .ranking-table th {
-  background-color: #4CAF50;
+  background-color: rgb(247, 126, 51);
   color: #fff;
   text-align: left;
 }
