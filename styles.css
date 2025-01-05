@@ -414,6 +414,7 @@ section h2 {
 }
 
 /* Code Card */
+/* Code Card Styles */
 .code-card {
   background-color: #2e2e2e; /* Dark background for the card */
   color: #f5f5f5; /* Light text color */
@@ -454,6 +455,7 @@ section h2 {
   margin-bottom: 15px;
   color: #bbb; /* Lighter text for description */
 }
+
 .copy-button {
   background-color: var(--primary-color);
   color: #000;
@@ -464,17 +466,19 @@ section h2 {
   cursor: pointer;
   transition: background-color var(--transition-speed);
 }
-/* show more options */
+
+/* Show More Options */
 /* Initially hide the code content */
 .code-content {
   max-height: 100px; /* Adjust based on your design */
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 1s ease; /* Smooth and slower transition */
 }
 
 /* Show more when the class is toggled */
 .show-more-visible {
-  max-height: none; /* Adjust based on your content size */
+  max-height: 3000px; /* Set a sufficiently large height for full content */
+  transition: max-height 1s ease; /* Smooth and slower transition */
 }
 
 .show-more {
