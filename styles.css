@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: 'Ubuntu', sans-serif;;
   line-height: 1.6;
   color: var(--text-dark);
   background: #fff;
