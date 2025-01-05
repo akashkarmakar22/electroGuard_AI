@@ -33,13 +33,13 @@ const electricityChart = new Chart(ctx, {
   type: 'bar', // Bar chart to represent theft incidents
   data: {
     labels: [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ], // Months of the year
     datasets: [
       {
         label: 'Electricity Theft Incidents',
-        data: [12, 22, 34, 41, 52, 63, 96, 85, 96, 102, 118, 130], // Example data points for theft incidents (one per month)
+        data: [15, 25, 40, 60, 85, 110, 125, 120, 100, 75, 50, 35], // Example data points for theft incidents (one per month)
         backgroundColor: 'rgba(255, 99, 132, 0.2)', // Light red background color
         borderColor: 'rgba(255, 99, 132, 1)', // Darker red border color
         borderWidth: 2,
@@ -102,27 +102,28 @@ function prevSlide() {
 // Data for rankings (5 rows per year)
 const rankings = {
   2024: [
-    { rank: 1, country: "Country A", loss: "5%" },
-    { rank: 2, country: "Country B", loss: "6%" },
-    { rank: 3, country: "Country C", loss: "7%" },
-    { rank: 4, country: "Country D", loss: "8%" },
-    { rank: 5, country: "Country E", loss: "9%" },
+    { rank: 1, country: "Brazil", loss: "16%" },
+    { rank: 2, country: "India", loss: "15%" },
+    { rank: 3, country: "Nigeria", loss: "14%" },
+    { rank: 4, country: "Pakistan", loss: "12%" },
+    { rank: 5, country: "South Africa", loss: "11%" },
   ],
   2023: [
-    { rank: 1, country: "Country X", loss: "4.5%" },
-    { rank: 2, country: "Country Y", loss: "5.5%" },
-    { rank: 3, country: "Country Z", loss: "6.5%" },
-    { rank: 4, country: "Country W", loss: "7.5%" },
-    { rank: 5, country: "Country V", loss: "8.5%" },
+    { rank: 1, country: "Brazil", loss: "15.5%" },
+    { rank: 2, country: "India", loss: "14.8%" },
+    { rank: 3, country: "Nigeria", loss: "14.2%" },
+    { rank: 4, country: "Pakistan", loss: "13%" },
+    { rank: 5, country: "South Africa", loss: "12%" },
   ],
   2022: [
-    { rank: 1, country: "Country P", loss: "6%" },
-    { rank: 2, country: "Country Q", loss: "6.5%" },
-    { rank: 3, country: "Country R", loss: "7.2%" },
-    { rank: 4, country: "Country S", loss: "7.8%" },
-    { rank: 5, country: "Country T", loss: "8.1%" },
+    { rank: 1, country: "Brazil", loss: "15%" },
+    { rank: 2, country: "India", loss: "14.5%" },
+    { rank: 3, country: "Nigeria", loss: "13.8%" },
+    { rank: 4, country: "Pakistan", loss: "13.5%" },
+    { rank: 5, country: "South Africa", loss: "12.5%" },
   ],
 };
+
 
 // Update year label when slider is moved
 function updateYearLabel(year) {
