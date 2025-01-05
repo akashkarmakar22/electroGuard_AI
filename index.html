@@ -264,54 +264,130 @@
       </div>
     </section>
     <section>
-      <!-- code-card -->
-      <div class="code-card">
-        <div class="code-header">
-          <h3>JS CODE</h3>
-          <button class="copy-button" onclick="copyCode('code1')">
-            Copy
-          </button>
-        </div>
-        <pre class="code-content" id="code1">
-    &lt;div&gt;
-        &lt;h1&gt;Hello, World!&lt;/h1&gt;
-        &lt;p&gt;This is a code snippet.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;h1&gt;Hello, World!&lt;/h1&gt;
-        &lt;p&gt;This is a code snippet.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-  </pre>
-        <button class="show-more" onclick="toggleCode('code1')">
-          Show More
-        </button>
-      </div>
-      <!-- code-card -->
+<!-- code-card -->
+<div class="code-card">
+  <div class="code-header">
+    <h3>ARDUINO CODE (C++)</h3>
+    <button class="copy-button" onclick="copyCode('code1')">
+      Copy
+    </button>
+  </div>
+  <pre class="code-content" id="code1">
+    &lt;!-- Code Starts --&gt;
+    #include &lt;WiFi.h&gt;
+    #include &lt;HTTPClient.h&gt;
 
-      <!-- code-card -->
-      <div class="code-card">
-        <div class="code-header">
-          <h3>JS CODE</h3>
-          <button class="copy-button" onclick="copyCode('code2')">
-            Copy
-          </button>
-        </div>
-        <pre class="code-content" id="code2">
-    &lt;div&gt;
-        &lt;h1&gt;Hello, World!&lt;/h1&gt;
-        &lt;p&gt;This is a code snippet.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;h1&gt;Hello, World!&lt;/h1&gt;
-        &lt;p&gt;This is a code snippet.&lt;/p&gt;
-    &lt;/div&gt;
+    // WiFi Credentials
+    const char* ssid = "SSID";           // WiFi SSID
+    const char* password = "PASSWORD";   // WiFi Password
+
+    // Server Configuration
+    const char* serverURL = "http://localhost:3000/store-data"; // server's endpoint
+
+    // Pin Definitions
+    const int currentPin = 35; // ADC pin where ACS712 OUT is connected (Adjust if needed)
+
+    // Sensor Specifications
+    const float adcResolution = 3.3 / 4096.0; // ESP32 ADC resolution (12-bit, 0-3.3V)
+    const float sensitivity = 0.185;          // Sensitivity for ACS712-10A (185mV per Amp)
+    float zeroCurrentVoltage = 2.509;        // Calibrated zero current voltage (will be set dynamically)
+
+    // Function to Filter and Stabilize Readings
+    float getFilteredCurrent() {
+      const int numSamples = 100; // Number of samples for averaging
+      float totalVoltage = 0;
+
+      for (int i = 0; i &lt; numSamples; i++) {
+        int rawValue = analogRead(currentPin);       // Read raw ADC value
+        float voltage = rawValue * adcResolution;   // Convert to voltage
+        totalVoltage += voltage;
+        delay(2);                                   // Small delay between samples
+      }
+
+      float avgVoltage = totalVoltage / numSamples; // Average the voltage readings
+      float current = (avgVoltage - zeroCurrentVoltage) / sensitivity; // Calculate current
+      return current;                               // Return filtered current value
+    }
+
+    void setup() {
+      Serial.begin(9600); // Start serial communication
+      pinMode(currentPin, INPUT); // Set current sensor pin as input
+
+      // Connect to WiFi
+      WiFi.begin(ssid, password);
+      Serial.print("Connecting to WiFi");
+      while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+      }
+      Serial.println("\nConnected to WiFi");
+
+      // Dynamic zero current calibration (no load connected)
+      float totalZeroVoltage = 0;
+      const int numZeroCalibSamples = 200; // Sample size for calibration
+      for (int i = 0; i &lt; numZeroCalibSamples; i++) {
+        int rawValue = analogRead(currentPin);       // Read raw ADC value
+        float voltage = rawValue * adcResolution;   // Convert to voltage
+        totalZeroVoltage += voltage;
+        delay(2);                                   // Small delay between samples
+      }
+
+      // Set the zeroCurrentVoltage based on the average value when no load is connected
+      zeroCurrentVoltage = totalZeroVoltage / numZeroCalibSamples;
+      Serial.print("Zero Current Voltage: ");
+      Serial.println(zeroCurrentVoltage, 4); // Print calibrated zero-current voltage
+    }
+
+    void loop() {
+      float current = getFilteredCurrent(); // Get stabilized current reading
+      float voltage = current * sensitivity + zeroCurrentVoltage; // Approximate voltage
+      int reading = analogRead(currentPin); // Raw ADC value
+      int flag = (current &gt; 10.0) ? 1 : 0; // Example: Flag if current &gt; 10A
+      const char* info = (flag == 1) ? "overload" : "normal load";
+
+      Serial.print("Measured Current: ");
+      Serial.print(current, 3); // Display current with 3 decimal places
+      Serial.println(" A");
+
+      // Send data to the server
+      if (WiFi.status() == WL_CONNECTED) {
+        HTTPClient http;
+        http.begin(serverURL);
+        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Create POST data
+        String postData = "current=" + String(current, 3) +
+                          "&voltage=" + String(voltage, 3) +
+                          "&reading=" + String(reading) +
+                          "&flag=" + String(flag) +
+                          "&info=" + String(info);
+
+        // Send the POST request
+        int httpResponseCode = http.POST(postData);
+        if (httpResponseCode &gt; 0) {
+          Serial.print("Data sent successfully. Response: ");
+          Serial.println(http.getString());
+        } else {
+          Serial.print("Error sending data. HTTP Response code: ");
+          Serial.println(httpResponseCode);
+        }
+        http.end();
+      } else {
+        Serial.println("WiFi not connected");
+      }
+
+      delay(1000); // 1-second delay before the next reading
+    }
+    &lt;!-- Code Ends --&gt;
   </pre>
-        <button class="show-more" onclick="toggleCode('code2')">
-          Show More
-        </button>
-      </div>
-      <!-- code-card -->
+  <button class="show-more" onclick="toggleCode('code1')">
+    Show More
+  </button>
+</div>
+<!-- code-card -->
+
+
+
     </section>
     <!-- Key Components -->
     <section>
