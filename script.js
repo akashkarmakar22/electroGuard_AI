@@ -80,6 +80,7 @@ const electricityChart = new Chart(ctx, {
 });
 
 let currentSlide = 0;
+let slideInterval; // Variable to store the interval ID
 
 function showSlide(index) {
     const slides = document.querySelectorAll(".carousel-images img");
@@ -94,6 +95,34 @@ function showSlide(index) {
 function nextSlide() {
     showSlide(currentSlide + 1);
 }
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+// Auto-slide functionality
+function startAutoSlide() {
+    slideInterval = setInterval(() => {
+        nextSlide();
+    }, 3000); // Change slide every 3 seconds
+}
+
+function stopAutoSlide() {
+    clearInterval(slideInterval);
+}
+
+// Initialize the carousel and start auto-slide
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".carousel");
+
+    // Start auto-slide
+    startAutoSlide();
+
+    // Add mouseover and mouseout events to stop and restart auto-slide
+    carousel.addEventListener("mouseover", stopAutoSlide);
+    carousel.addEventListener("mouseout", startAutoSlide);
+});
+
 
 function prevSlide() {
     showSlide(currentSlide - 1);

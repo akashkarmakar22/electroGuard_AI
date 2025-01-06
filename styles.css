@@ -72,11 +72,11 @@ header p {
   padding: 1rem 2rem;
   /* From https://css.glass */
   background: rgba(245, 151, 88, 0.29);
-  border-radius: 16px;
+  /* border-radius: 16px; */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.5px);
   -webkit-backdrop-filter: blur(7.5px);
-  border: 1px solid rgba(235, 209, 61, 0.3); /* Adjust to match your site theme */
+  border: 1px solid rgba(235, 209, 61, 0.3);/* Adjust to match your site theme*/
   color: black;
   position: sticky;
   top: 0;
@@ -141,13 +141,13 @@ header p {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 /* Section Styles */
 section {
-  margin: 2rem 0;
-  padding: 2.5rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem 1rem!important;
   background: var(--bg-light);
   border-radius: 12px;
   box-shadow: 0 6px 12px var(--shadow-dark);
@@ -168,17 +168,17 @@ section {
   }
 }
 
-section:hover {
+/* section:hover {
   transform: translateY(-5px);
   background-color: #ffedcc;
   box-shadow: 0 6px 12px rgba(236, 147, 91, 0.5);
-}
+} */
 
 section h2 {
   text-align: center;
   margin-bottom: 2rem;
   color: var(--secondary-color);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   text-shadow: 1px 1px #ddd;
 }
 
@@ -186,13 +186,14 @@ section h2 {
   position: relative;
   width: 100%;
   margin-top: 1.5rem;
+  font-size: 0.8rem;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .project-image {
   width: 100%;
-  hight: 50px;
+  height: 150px;
   border-radius: 8px;
 }
 
@@ -203,12 +204,7 @@ section h2 {
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.6
-  ); /* Increase opacity for better visibility */
+  background-color: rgba(49, 49, 49, 0.6); /* Increase opacity for better visibility */
   padding: 1rem;
   border-radius: 8px;
   max-width: 90%; /* Prevent overflowing on smaller screens */
@@ -225,7 +221,7 @@ section h2 {
 
 @media (max-width: 480px) {
   .project-description {
-    font-size: 0.9rem; /* Smaller font for small screens */
+    font-size: 0.8rem; /* Smaller font for small screens */
     padding: 0.6rem;
     top: 5px;
     left: 5px;
