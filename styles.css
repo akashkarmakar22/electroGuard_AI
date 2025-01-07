@@ -168,11 +168,11 @@ section {
   }
 }
 
-/* section:hover {
+ section:hover {
   transform: translateY(-5px);
   background-color: #ffedcc;
   box-shadow: 0 6px 12px rgba(236, 147, 91, 0.5);
-} */
+}
 
 section h2 {
   text-align: center;
@@ -533,6 +533,7 @@ footer p {
   font-weight: bold;
   transition: color 0.3s ease, transform 0.3s ease;
   display: inline-block;
+  margin-left: .7rem;
 }
 
 .references a:hover {
